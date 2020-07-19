@@ -2,9 +2,9 @@
 
 # Como crear un CTF con Owasp Juice Shop y Traefik 
 
-Durante toda mi aventura con owasp juice shop he realizado eventos de ctf en la Comunidad Dojo Panamá para poner en práctica todos nuestros conocimientos en aplicaciones web vulnerabiles. El proceso de configurar los servicios, aplicación, dominios puede llevarte horas de implementación. 
+Durante toda mi aventura con Owasp Juice Shop he realizado eventos de ctf en la Comunidad Dojo Panamá y poner en práctica todos nuestros conocimientos en aplicaciones web vulnerables. El proceso de configurar los servicios, aplicación, dominios puede llevarte horas de implementación. 
 
-Me gustaría compartir a la comunidad de owasp como implementar con Docker-compose y traefik un ambiente de CTF automatizado utilizando esta aplicación y otras como wordpress o aplicaciones vulnerables como DWVA, etc.
+Me gustaría compartir a la comunidad de Owasp como implementar con Docker-compose y traefik un ambiente de CTF automatizado utilizando esta aplicación y otras como wordpress o aplicaciones vulnerables como DWVA, etc.
 
  
 

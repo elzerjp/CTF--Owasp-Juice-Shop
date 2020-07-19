@@ -46,9 +46,7 @@ Usaremos la utilidad htpasswd para crear esta contraseña encriptada. Primero, i
 
 2. ​    htpassw -nb admin:PASSWORD
 
-3.    Salida del resultado
-
-4. ·  admin:$apr1$ruca84Hq$mbjdMZBAG.KWn7vfN/SNK/
+3.    Salida del resultado:  admin:$apr1$ruca84Hq$mbjdMZBAG.KWn7vfN/SNK/
 
 
 Para configurar el servidor de Traefik, crearemos un nuevo archivo de configuración llamado traefik. toml usando el formato 

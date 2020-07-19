@@ -12,7 +12,7 @@ Me gustaría compartir a la comunidad de Owasp como implementar con Docker-compo
 
 **Para seguir este tutorial, necesitarás lo siguiente:**
 
-1.   Un servidor (Ubuntu,Debian) que podemos ubicarlos en aws o vurlt, para este ambiente de laboratorio hemos utilizado vultr.com.
+1.   Un servidor (Ubuntu,Debian) que podemos ubicarlos en aws o vurlt.com, para este ambiente de laboratorio hemos utilizado vultr.com.
 2.   Docker instalado en su servidor, https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-9 
 
 3.   Docker Compose instalado, https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-debian-9 

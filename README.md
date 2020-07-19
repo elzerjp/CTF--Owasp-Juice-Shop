@@ -38,7 +38,7 @@ A través de traefik vamos a lograr automatizar nuestros dominios con certificad
 
 Utilizamos el proyecto oficial de traefik en Docker https://hub.docker.com/_/traefik para su configuración. 
 
-Pero antes de que pongamos en marcha nuestro contenedor de Traefik, necesitamos crear un archivo de configuración y establecer una contraseña encriptada para poder acceder al panel de control. 
+Pero antes de que pongamos en marcha nuestro contenedor de Traefik, necesitamos crear un archivo de configuración y establecer una contraseña cifrada para poder acceder al panel de control. 
 
 Usaremos la utilidad htpasswd para crear esta contraseña encriptada. Primero, instalaremos la utilidad, que está incluida en el paquete apache2-utils:
 

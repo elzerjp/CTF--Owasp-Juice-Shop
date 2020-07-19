@@ -403,7 +403,7 @@ services:
 
  
 
-Miramos nuestro dashboard de traefik y verificamos nuestros dominios creados redirigiendo a nuestros contenedores que contienen nuestra aplicación de wordpres, owasp Juice Shop y CTFD
+Miramos nuestro dashboard de traefik y verificamos nuestros dominios creados redirigiendo a nuestros contenedores que contienen nuestra aplicación de wordpres, owasp Juice Shop y CTFd framework.
 
  
 
@@ -431,7 +431,7 @@ Miramos nuestro dashboard de traefik y verificamos nuestros dominios creados red
 
  
 
-Para implementar el dashboad de CTF y que los participantes puedan introducir sus flags, dentro nuestro Docker compose utilizamos CTFD https://hub.docker.com/r/ctfd/ctfd/
+Para implementar el dashboad de CTF y que los participantes puedan introducir sus flags, dentro nuestro Docker compose utilizamos CTFd https://hub.docker.com/r/ctfd/ctfd/
 
 ### **¿Ques CTFd?**
 
@@ -441,7 +441,7 @@ El CTFd es Capture the flag framework que se centra en la facilidad de uso y la 
 
  
 
- Podrán notar que dentro nuestro Docker-compose ya se encuentra agregada la imagen del Docker de CTFD y configurada con las variables de traefik para crear el dominio y haga su redirección del trafico a la aplicación y que automáticamente se ejecutó cuando iniciamos nuestro Docker-compose.
+ Podrán notar que dentro nuestro Docker-compose ya se encuentra agregada la imagen del Docker de CTFD y configurada con las variables de traefik para crear el dominio y realice su redirección del trafico a la aplicación y que automáticamente se ejecutó cuando iniciamos nuestro Docker-compose.
 
 ![img](./img/clip_image022.png)
 
@@ -513,7 +513,7 @@ En nuestra sección de backup elegimos importar nuestro archivo zip que contiene
 
  
 
-Esperamos unos minutos y tendremos que reconfigurar el ambiente CTFD framework con los challenges importados.
+Esperamos unos minutos y tendremos que reconfigurar el ambiente CTFd framework con los challenges importados.
 
 ![img](./img/clip_image036.jpg)
 
@@ -567,7 +567,7 @@ Introducimos nuestro flag
 
 3.    Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
 
-4.    CTFD framework como nuestro dashboard para la competencia. 
+4.    CTFd framework como nuestro dashboard para la competencia. 
 
 
 

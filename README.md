@@ -12,7 +12,7 @@ Me gustaría compartir a la comunidad de owasp como implementar con Docker-compo
 
 Para seguir este tutorial, necesitarás lo siguiente:
 
-·    Un servidor (Ubuntu,Debian) que podemos ubicarlos en aws o vurlt, para este ambiente de laboratorio hemos utilizado vultr.com. 
+·    Un servidor (Ubuntu,Debian) que podemos ubicarlos en aws o vurlt.com, para este ambiente de laboratorio hemos utilizado vultr.com. 
 
 ·    Docker instalado en su servidor, https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-9 
 
@@ -54,7 +54,7 @@ Usaremos la utilidad htpasswd para crear esta contraseña encriptada. Primero, i
 
  
 
-Para configurar el servidor de Traefik, crearemos un nuevo archivo de configuración llamado traefik. toml usando el formato TOML; es un lenguaje de configuración similar a los archivos INI, pero estandarizado. Este archivo nos permite configurar el servidor de Traefik y varias integraciones, o proveedores, que queramos utilizar. En este tutorial, utilizaremos tres de los proveedores disponibles de Traefik: api, docker y acme, que se utiliza para soportar TLS utilizando Let's Encrypt.
+Para configurar el servidor de Traefik, crearemos un nuevo archivo de configuración llamado traefik.toml usando el formato TOML; es un lenguaje de configuración similar a los archivos INI, pero estandarizado. Este archivo nos permite configurar el servidor de Traefik y varias integraciones, o proveedores, que queramos utilizar. En este tutorial, utilizaremos tres de los proveedores disponibles de Traefik: api, docker y acme, que se utiliza para soportar TLS utilizando Let's Encrypt.
 
 **Contenido del archivo traefik.toml**
 

@@ -433,7 +433,7 @@ Miramos nuestro dashboard de traefik y verificamos nuestros dominios creados red
 
 Para implementar el dashboad de CTF y que los participantes puedan introducir sus flags, dentro nuestro Docker compose utilizamos CTFD https://hub.docker.com/r/ctfd/ctfd/
 
-### **¿Ques CTFD?**
+### **¿Ques CTFd?**
 
 El CTFd es Capture the flag framework que se centra en la facilidad de uso y la personalización. Viene con todo lo que necesitas para ejecutar un CTF y es fácil de personalizar con plugins, temas y nuestro dashboard para monitorear los puntajes de la competencia. 
 
@@ -447,7 +447,7 @@ El CTFd es Capture the flag framework que se centra en la facilidad de uso y la 
 
  
 
-Accedemos a nuestro dashboard para CTFD y aplicamos las configuraciones del evento:
+Accedemos a nuestro dashboard para CTFd framework y aplicamos las configuraciones del evento:
 
 1.    Nombre del evento.
 
@@ -462,15 +462,15 @@ Accedemos a nuestro dashboard para CTFD y aplicamos las configuraciones del even
 
  
 
-Una vez tengamos configurado el ambiente de CTFD necesitamos importar los **challenges de Owasp Juice Shop,** una buena referencia para esta sección  la tome de la siguiente dirección propia del creador de Owasp Juice Shop https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/ctf.html
+Una vez tengamos configurado el ambiente de CTFd necesitamos importar los **challenges de Owasp Juice Shop,** una buena referencia para esta sección  la tome de la siguiente dirección propia del creador de Owasp Juice Shop https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/ctf.html
 
  
 
-### **A continuación, los pasos para extraer los challenges de nuestros Juice shop y importarlos en nuestro CTFD framework.** 
+### **A continuación, los pasos para extraer los challenges de nuestros Juice shop y importarlos en nuestro CTFd framework.** 
 
 **** 
 
-**El juice-shop-ctf-cli** es una simple herramienta de línea de comandos, que generará un archivo compatible con el formato de copia de seguridad de datos de su marco CTF elegido, en nuestro ambiente para CTFD framework.
+**El juice-shop-ctf-cli** es una simple herramienta de línea de comandos, que generará un archivo compatible con el formato de copia de seguridad de datos de su marco CTF elegido, en nuestro ambiente para CTFd framework.
 
  
 
@@ -482,7 +482,7 @@ Una vez tengamos configurado el ambiente de CTFD necesitamos importar los **chal
 
 Parámetros a configurar: 
 
-1.  CTFD
+1.  CTFd
 
 2.   Juice Shop URL: colocamos la URL de uno de nuestros juice shop configurados, para este ambiente https://juice1.fisc.online/#/ 
 
@@ -519,7 +519,7 @@ Esperamos unos minutos y tendremos que reconfigurar el ambiente CTFD framework c
 
  
 
-Creamos un team en CTFD y accedemos a los challenges
+Creamos un team en CTFd y accedemos a los challenges
 
 ![img](./img/clip_image038.jpg)
 
@@ -531,7 +531,7 @@ Creamos un team en CTFD y accedemos a los challenges
 
 
 
-Probamos nuestros flags generados por el Owasp juice Shop en nuestro CTFD framework.
+Probamos nuestros flags generados por el Owasp juice Shop en nuestro CTFd framework.
 
  
 
@@ -560,7 +560,7 @@ Introducimos nuestro flag
 
 3. ​    Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
 
-4.   CTFD framework como nuestro dashboard para la competencia.  
+4.   CTFd framework como nuestro dashboard para la competencia.  
 1.    Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
 
 2.    Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 

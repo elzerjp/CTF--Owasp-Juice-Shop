@@ -1,6 +1,6 @@
 
 
-### Como crear un CTF con Owasp Juice Shop y Traefik 
+# Como crear un CTF con Owasp Juice Shop y Traefik 
 
 Durante toda mi aventura con owasp juice shop he realizado eventos de ctf para poner en práctica todos nuestros conocimientos en pentesting web. El proceso de configurar los servicios, aplicación, dominios puede llevarte horas de implementación. 
 
@@ -10,10 +10,9 @@ Me gustaría compartir a la comunidad de owasp como implementar con Docker-compo
 
 #### **Requisitos para el ambiente**
 
-Para seguir este tutorial, necesitarás lo siguiente:
+**Para seguir este tutorial, necesitarás lo siguiente:**
 
-1.   Un servidor (Ubuntu,Debian) que podemos ubicarlos en aws o vurlt, para este ambiente de laboratorio hemos utilizado vultr.com. 
-
+1.   Un servidor (Ubuntu,Debian) que podemos ubicarlos en aws o vurlt, para este ambiente de laboratorio hemos utilizado vultr.com.
 2.   Docker instalado en su servidor, https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-9 
 
 3.   Docker Compose instalado, https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-debian-9 
@@ -39,17 +38,17 @@ A través de traefik vamos a lograr automatizar nuestros dominios con certificad
 
 Utilizamos el proyecto oficial de traefik en Docker https://hub.docker.com/_/traefik para su configuración. 
 
-Pero antes de que pongamos en marcha nuestro contenedor de Traefik, necesitamos crear un archivo de configuración y establecer una contraseña encriptada para poder acceder al panel de control. 
+Pero antes de que pongamos en marcha nuestro contenedor de Traefik, necesitamos crear un archivo de configuración y establecer una contraseña cifrada para poder acceder al panel de control. 
 
 Usaremos la utilidad htpasswd para crear esta contraseña encriptada. Primero, instalaremos la utilidad, que está incluida en el paquete apache2-utils:
 
-1. ·    sudo apt install apache2-utils
+1. ​    sudo apt install apache2-utils
 
-2. ·    htpassw -nb admin:PASSWORD
+2. ​    htpassw -nb admin:PASSWORD
 
-3. ·    Salida del resultado
+3.    Salida del resultado
 
-4. ·    admin:$apr1$ruca84Hq$mbjdMZBAG.KWn7vfN/SNK/
+4. ·  admin:$apr1$ruca84Hq$mbjdMZBAG.KWn7vfN/SNK/
 
 
 Para configurar el servidor de Traefik, crearemos un nuevo archivo de configuración llamado traefik. toml usando el formato 
@@ -60,7 +59,8 @@ TOML
 
 ; es un lenguaje de configuración similar a los archivos INI, pero estandarizado. Este archivo nos permite configurar el servidor de Traefik y varias integraciones, o proveedores, que queramos utilizar. En este tutorial, utilizaremos tres de los proveedores disponibles de Traefik: api, docker y acme, que se utiliza para soportar TLS utilizando Let's Encrypt.
 
-**Contenido del archivo traefik.toml**
+Para configurar el servidor de Traefik, crearemos un nuevo archivo de configuración llamado traefik.toml usando el formato TOML similar a los archivos INI, pero estandarizado. Este archivo nos permite configurar el servidor de Traefik y varias integraciones, o proveedores, que queramos utilizar. En este tutorial, utilizaremos tres de los proveedores disponibles de Traefik: api, docker y acme, que se utiliza para soportar TLS utilizando Let's Encrypt.
+#### Contenido del archivo traefik.toml
 
 ```
 defaultEntryPoints = ["http", "https"]
@@ -128,35 +128,25 @@ Cuando el contenedor de Traefik empiece, lo añadiremos a esta red. Entonces pod
 
  A continuación, crearemos un archivo vacío que contendrá nuestra información de Let's Encrypt. Compartiremos esto en el contenedor para que Traefik pueda usarlo:
 
-·    Touch acmé.json
+**·    Touch acmé.json**
 
 Traefik sólo podrá usar este archivo si el usuario raíz dentro del contenedor tiene un acceso único de lectura y escritura a él. Para ello, bloquea los permisos de acme.json para que sólo el propietario del archivo tenga permiso de lectura y escritura.
 
-·    Chmod 600 acme.json 
+**·    Chmod 600 acme.json** 
 
-Iniciamos finalmente nuestro contenedor traefik con los siguientes comandos: 
+Iniciamos finalmente nuestro contenedor **traefik** con los siguientes comandos: 
 
 ```
-docker run -d \
-
- -v /var/run/docker.sock:/var/run/docker.sock \
-
- -v $PWD/traefik.toml:/traefik.toml \
-
- -v $PWD/acme.json:/acme.json \
-
- -p 80:80 \
-
- -p 443:443 \
-
- -l traefik.frontend.rule=Host:monitor.your_domain \
-
- -l traefik.port=8080 \
-
- --network web \
-
- --name traefik \
-
+docker run -d 
+ -v /var/run/docker.sock:/var/run/docker.sock 
+ -v $PWD/traefik.toml:/traefik.toml 
+ -v $PWD/acme.json:/acme.json 
+ -p 80:80 
+ -p 443:443 
+ -l traefik.frontend.rule=Host:monitor.your_domain 
+ -l traefik.port=8080 
+ --network web 
+ --name traefik 
  traefik:1.7.6-alpine
 
  
@@ -174,6 +164,8 @@ docker run -d \
 
 
 ![img](./img/clip_image004.jpg)
+
+
 
 #### Ahora para registrar nuestros Owasp Juice Shop con traefik necesitamos crear un Docker compose con las siguientes especificaciones. 
 
@@ -204,23 +196,23 @@ services:
 
  labels:
 
-  \- traefik.backend=dark
+  - traefik.backend=dark
 
-  \- traefik.frontend.rule=Host:sic.fisc.online
+  - traefik.frontend.rule=Host:sic.fisc.online
 
-  \- traefik.docker.network=web
+  - traefik.docker.network=web
 
-  \- traefik.port=80
+  - traefik.port=80
 
  networks:
 
-  \- internal
+  - internal
 
-  \- web
+  - web
 
  depends_on:
 
-  \- mysql
+  - mysql
 
  mysql:
 
@@ -232,11 +224,11 @@ services:
 
  networks:
 
-  \- internal
+  - internal
 
  labels:
 
-  \- traefik.enable=false
+  - traefik.enable=false
 
  adminer:
 
@@ -244,23 +236,23 @@ services:
 
  labels:
 
-  \- traefik.backend=adminer
+  - traefik.backend=adminer
 
-  \- traefik.frontend.rule=Host:db-admin.fisc.online
+  - traefik.frontend.rule=Host:db-admin.fisc.online
 
-  \- traefik.docker.network=web
+  - traefik.docker.network=web
 
-  \- traefik.port=8080
+  - traefik.port=8080
 
  networks:
 
-  \- internal
+  - internal
 
-  \- web
+  - web
 
  depends_on:
 
-  \- mysql
+  - mysql
 
  owasp:
 
@@ -272,17 +264,17 @@ services:
 
  labels:
 
-  \- traefik.backend=owasp
+  - traefik.backend=owasp
 
-  \- traefik.frontend.rule=Host:juice1.fisc.online
+  - traefik.frontend.rule=Host:juice1.fisc.online
 
-  \- traefik.docker.network=web
+  - traefik.docker.network=web
 
-  \- traefik.port=3000
+  - traefik.port=3000
 
  networks:
 
-  \- web
+  - web
 
  owasp2:
 
@@ -294,17 +286,17 @@ services:
 
  labels:
 
-  \- traefik.backend=owasp2
+  - traefik.backend=owasp2
 
-  \- traefik.frontend.rule=Host:juice2.fisc.online
+  - traefik.frontend.rule=Host:juice2.fisc.online
 
-  \- traefik.docker.network=web
+  - traefik.docker.network=web
 
-  \- traefik.port=3000
+  - traefik.port=3000
 
  networks:
 
-  \- web
+  - web
 
  owasp3:
 
@@ -316,17 +308,17 @@ services:
 
  labels:
 
-  \- traefik.backend=owasp3
+  - traefik.backend=owasp3
 
-  \- traefik.frontend.rule=Host:juice3.fisc.online
+  - traefik.frontend.rule=Host:juice3.fisc.online
 
-  \- traefik.docker.network=web
+  - traefik.docker.network=web
 
-  \- traefik.port=3000
+  - traefik.port=3000
 
  networks:
 
-  \- web
+  - web
 
  
 
@@ -340,17 +332,17 @@ services:
 
  labels:
 
-  \- traefik.backend=ctfd
+  - traefik.backend=ctfd
 
-  \- traefik.frontend.rule=Host:ctfd.fisc.online
+  - traefik.frontend.rule=Host:ctfd.fisc.online
 
-  \- traefik.docker.network=web
+  - traefik.docker.network=web
 
-  \- traefik.port=8000
+  - traefik.port=8000
 
  networks:
 
-  \- web
+  - web
 
  
 ```
@@ -368,13 +360,10 @@ services:
 5. Con esta configuración, todo el tráfico enviado al puerto 80 y 443 será reenviado a nuestros contenedores 
 
 
-  
 
 ### Conceptos sobre las variables de entornos utilizadas dentro del docker-compose: 
 
-1. Para nuestro wordpres vulnerables agregamos una variable de entorno que contiene el password de la base datos a configurar. 
-
- 
+**Para nuestro wordpres vulnerables agregamos una variable de entorno que contiene el password de la base datos a configurar.** 
 
 1.    **Comando de ejecución:** export WORDPRESS_DB_PASSWORD=PASSWORD
 
@@ -389,9 +378,9 @@ services:
 
 2. Variable de entornos para OWASP juice shop en modo CTF, para que el ambiente nos genere los flag automáticamente necesitamos especificar que se inicien los contenedores en modo CTF, configuramos nuestra variable de entonco con los siguientes comandos en nuestra terminal del servidor.
 
-1.    Export NODE_ENV: ctf (comandos en la termina del Linux 
+1.    **Export NODE_ENV:** ctf (comandos en la termina del Linux 
 
-2.   NODE_ENV: (variable en nuestro file de Docker-compose)
+2.   **NODE_ENV:** (variable en nuestro file de Docker-compose)
 
 
 ![img](./img/clip_image007.jpg)
@@ -404,17 +393,9 @@ services:
 
  
 
- 
 
- 
 
- 
-
- 
-
- 
-
-### Finalmente levamos nuestro ambiente con Docker-compose: 
+### Finalmente ejecutamos nuestro docker-compose.yml: 
 
 **Comando de ejecución: Docker-compose up -d**  
 
@@ -481,15 +462,15 @@ Accedemos a nuestro dashboard para CTFD y aplicamos las configuraciones del even
 
  
 
-Una vez tengamos configurado el ambiente de CTFD necesitamos importar los challenges de Owasp Juice Shop, una buena referencia para esta sección  la tome de la siguiente dirección propia del creado de Owasp Juice Shop https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/ctf.html
+Una vez tengamos configurado el ambiente de CTFD necesitamos importar los **challenges de Owasp Juice Shop,** una buena referencia para esta sección  la tome de la siguiente dirección propia del creador de Owasp Juice Shop https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/ctf.html
 
  
 
 ### **A continuación, los pasos para extraer los challenges de nuestros Juice shop y importarlos en nuestro CTFD framework.** 
 
- 
+**** 
 
-El juice-shop-ctf-cli es una simple herramienta de línea de comandos, que generará un archivo compatible con el formato de copia de seguridad de datos de su marco CTF elegido, en nuestro ambiente para CTFD framework.
+**El juice-shop-ctf-cli** es una simple herramienta de línea de comandos, que generará un archivo compatible con el formato de copia de seguridad de datos de su marco CTF elegido, en nuestro ambiente para CTFD framework.
 
  
 
@@ -572,6 +553,7 @@ Introducimos nuestro flag
 
 ### Conclusiones: 
 
+<<<<<<< HEAD
 1.   Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
 
 2.    Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
@@ -579,10 +561,17 @@ Introducimos nuestro flag
 3. ​    Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
 
 4.   CTFD framework como nuestro dashboard para la competencia.  
+1.    Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
+
+2.    Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
+
+3.    Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
+
+4.    CTFD framework como nuestro dashboard para la competencia. 
 
 
- 
 
- 
 
- 
+
+
+

@@ -1,0 +1,86 @@
+version: "3"
+networks:
+ web:
+  external: true
+ internal:
+  external: false
+services:
+ dark:
+  image: wordpress:4.9.8-apache
+  environment:
+   WORDPRESS_DB_PASSWORD:
+  labels:
+   - traefik.backend=dark
+   - traefik.frontend.rule=Host:sic.fisc.online
+   - traefik.docker.network=web
+   - traefik.port=80
+  networks:
+   - internal
+   - web
+  depends_on:
+   - mysql
+ mysql:
+  image: mysql:5.7
+  environment:
+   MYSQL_ROOT_PASSWORD:
+  networks:
+   - internal
+  labels:
+   - traefik.enable=false
+ adminer:
+  image: adminer:4.6.3-standalone
+  labels:
+   - traefik.backend=adminer
+   - traefik.frontend.rule=Host:db-admin.fisc.online
+   - traefik.docker.network=web
+   - traefik.port=8080
+  networks:
+   - internal
+   - web
+  depends_on:
+   - mysql
+ owasp:
+  image: bkimminich/juice-shop:v8.7.2
+  environment:
+   NODE_ENV:
+  labels:
+   - traefik.backend=owasp
+   - traefik.frontend.rule=Host:juice1.fisc.online
+   - traefik.docker.network=web
+   - traefik.port=3000
+  networks:
+   - web
+ owasp2:
+  image: bkimminich/juice-shop:v8.7.2
+  environment:
+   NODE_ENV:
+  labels:
+   - traefik.backend=owasp2
+   - traefik.frontend.rule=Host:juice2.fisc.online
+   - traefik.docker.network=web
+   - traefik.port=3000
+  networks:
+   - web
+ owasp3:
+  image: bkimminich/juice-shop
+  environment:
+   NODE_ENV:
+  labels:
+   - traefik.backend=owasp3
+   - traefik.frontend.rule=Host:juice3.fisc.online
+   - traefik.docker.network=web
+   - traefik.port=3000
+  networks:
+   - web
+
+ ctfd:
+  image: ctfd/ctfd
+  environment:
+   NODE_ENV:
+  labels:
+   - traefik.backend=ctfd
+   - traefik.frontend.rule=Host:ctfd.fisc.online
+   - traefik.docker.network=web
+   - traefik.port=8000
+  networks:
+   - web

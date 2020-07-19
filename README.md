@@ -553,7 +553,7 @@ Introducimos nuestro flag
 
 ### Conclusiones: 
 
-<<<<<<< HEAD
+
 1.   Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
 
 2.    Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 

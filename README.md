@@ -117,7 +117,7 @@ network = "web"
 
  
 
-Antes de iniciar nuestro contenedor creamos una red para el proxy pueda compartirla con los contenedores. La red de Docker es necesaria para que podamos usarla con aplicaciones que se ejecuten usando Docker compose. **Nombre de nuestra red es Web.**
+Antes de iniciar nuestro contenedor creamos una red para que el proxy pueda compartirla con los contenedores. La red de Docker es necesaria para que podamos usarla con aplicaciones que se ejecuten usando Docker compose. **Nombre de nuestra red es Web.**
 
 ·    **Comando de ejecución:** docker network creater web (comando para crear nuestra red)
 
@@ -375,7 +375,7 @@ services:
 
 2. Variable de entornos para OWASP juice shop en modo CTF, para que el ambiente nos genere los flag automáticamente necesitamos especificar que se inicien los contenedores en modo CTF, configuramos nuestra variable de entonco con los siguientes comandos en nuestra terminal del servidor.
 
-1.    **Export NODE_ENV:** ctf (comandos en la termina del Linux 
+1.    **Export NODE_ENV:** ctf (comandos en la termina del Linux) 
 
 2.   **NODE_ENV:** (variable en nuestro file de Docker-compose)
 
@@ -414,7 +414,7 @@ Miramos nuestro dashboard de traefik y verificamos nuestros dominios creados red
 
  
 
-**Owasp Juice 2** 
+**Owasp Juice shop 2** 
 
 ![img](./img/clip_image017.jpg)
 
@@ -422,7 +422,7 @@ Miramos nuestro dashboard de traefik y verificamos nuestros dominios creados red
 
 
 
-**Owasp Juice 3** 
+**Owasp Juice shop 3** 
 
 ![img](./img/clip_image019.jpg)
 
@@ -446,11 +446,11 @@ El CTFd es Capture the flag framework que se centra en la facilidad de uso y la 
 
 Accedemos a nuestro dashboard para CTFd framework y aplicamos las configuraciones del evento:
 
-1.    Nombre del evento.
+1.    Nombre del evento
 
 2.    Usuario administrador
 
-3.   Estilo del Evento. 
+3.   Estilo del Evento 
 
 4.   Fecha de inicio 
 
@@ -551,20 +551,16 @@ Introducimos nuestro flag
 ### Conclusiones: 
 
 
-1.   Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
+1.  Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
 
-2.    Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
+2   Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
 
-3. ​    Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
+3.  Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
 
-4.   CTFd framework como nuestro dashboard para la competencia.  
-1.    Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
+4.  CTFd framework como nuestro dashboard para la competencia.  
 
-2.    Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
 
-3.    Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
 
-4.    CTFd framework como nuestro dashboard para la competencia. 
 
 
 

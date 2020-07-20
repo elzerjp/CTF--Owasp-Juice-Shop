@@ -17,7 +17,7 @@ Me gustaría compartir a la comunidad de Owasp como implementar con Docker-compo
 
 3.   Docker Compose instalado, https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-debian-9 
 
-4.   Un dominio y los registros para cado unos de nuestro ambiente, que cada uno apunta a la dirección IP de el servidor.
+4.   Un dominio y los registros para cado uno de nuestros ambientes, que cada uno apunta a la dirección IP de el servidor.
 
 
 **Pero antes de comenzar a configurar nuestro ambiente de CTF definíamos algunos conceptos**. 

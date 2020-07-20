@@ -438,7 +438,7 @@ El CTFd es Capture the flag framework que se centra en la facilidad de uso y la 
 
  
 
- Podrán notar que dentro nuestro Docker-compose ya se encuentra agregada la imagen del Docker de CTFD y configurada con las variables de traefik para crear el dominio y realice su redirección del trafico a la aplicación y que automáticamente se ejecutó cuando iniciamos nuestro Docker-compose.
+ Podrán notar que dentro nuestro Docker-compose ya se encuentra agregada la imagen del Docker de CTFd y configurada con las variables de traefik para crear el dominio y realice su redirección del trafico a la aplicación y que automáticamente se ejecutó cuando iniciamos nuestro Docker-compose.
 
 ![img](./img/clip_image022.png)
 
@@ -551,13 +551,13 @@ Introducimos nuestro flag
 ### Conclusiones: 
 
 
-1.  Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
+1.Configuración de traefik para redireccionar nuestro trafico y generar los dominios con su certificado automatizado. 
 
-2   Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
+2 Registro de nuestros dominios en nuestra tabla de DNS, en este laboratorio utilizamos Cloudflare. 
 
-3.  Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
+3.Un solo archivo de Docker-compose para configurar nuestro ambiente de CTF con owasp Juice shop para cada participante o grupo, en este taller utilizamos tres, si desean aumentar la cantidad de los ambientes del Juice shop solo basta con replicar la configuración de Owasp Juice shop dentro del Docker-compose y cambiar los valores correspondientes. 
 
-4.  CTFd framework como nuestro dashboard para la competencia.  
+4.CTFd framework como nuestro dashboard para la competencia.  
 
 
 
